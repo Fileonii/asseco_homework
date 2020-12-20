@@ -5,7 +5,6 @@ import GetData from "./components/getData";
 function App() {
   return (
     <div className="App">
-      Hejo
       <GetData />
     </div>
   );
