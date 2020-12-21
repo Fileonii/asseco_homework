@@ -7,16 +7,35 @@ function FormComponent({ controls, value, onTestChange }) {
   const inputType = value.type.toLowerCase();
 
   function handleChange(e) {
-    // onTestChange(e.target.value);
+    const handleObj = {
+      key: `${value.key}`,
+      value: e.target.value,
+    };
+
+    onTestChange(handleObj);
   }
   const makeComponent = () => {
     console.log(inputType);
-    if (inputType != "list") {
+    if (inputType == "checkbox") {
       return (
         <div>
           <Form.Group controlId={`${value.key}`}>
             <Form.Label>{value.caption}</Form.Label>
             <Form.Control onChange={handleChange} type={`${inputType}`} />
+          </Form.Group>
+        </div>
+      );
+    }
+    if (inputType == "text") {
+      return (
+        <div>
+          <Form.Group controlId={`${value.key}`}>
+            <Form.Label>{value.caption}</Form.Label>
+            <Form.Control
+              defaultValue={value.defaultValue}
+              onChange={handleChange}
+              type={`${inputType}`}
+            />
           </Form.Group>
         </div>
       );
@@ -26,7 +45,7 @@ function FormComponent({ controls, value, onTestChange }) {
         <div>
           <Form.Group controlId={`${value.key}`}>
             <Form.Label>{value.caption}</Form.Label>
-            <Form.Control as="select">
+            <Form.Control onChange={handleChange} as="select">
               {selectItems.map((item, i = 0) => (
                 <option key={`${i}-${controls}`} value={`${item.value}`}>
                   {item.caption}

@@ -9,9 +9,11 @@ function GetData() {
   const [apiWeb, setApiWeb] = useState([]);
   const [loading, setLoading] = useState(false);
   const [test, setTest] = useState([]);
+
   const url = "http://localhost:5000/";
 
   const AddOption = controls.map((AddOption) => AddOption);
+  console.log(test);
 
   const getErp = (choose) => {
     if (choose != "---") {
@@ -31,14 +33,33 @@ function GetData() {
     if (test.length > 0) {
       setTest([]);
     }
-    apiWeb.map((value) => {
-      setTest((prevArr) => [...prevArr, { key: `${value.key}`, content: "" }]);
-    });
+    const arrayValue = apiWeb.map((value) => ({
+      key: `${value.key}`,
+      content: `${value.defaultValue}`,
+    }));
+    setTest(arrayValue);
   };
   const handleApiChoose = (e) => {
+    initializeValues();
     console.log(controls[e.target.value]);
     setChoose(controls[e.target.value]);
     getErp(controls[e.target.value]);
+  };
+  const handleChange = (e) => {
+    //object is here
+    console.log(e.value);
+    let arrayValue = test.slice();
+    for (let index = 0; index < arrayValue.length; index++) {
+      if (arrayValue[index].key === e.key) {
+        arrayValue[index] = {
+          ...arrayValue[index],
+          content: `${e.value}`,
+        };
+      }
+    }
+
+    console.log(arrayValue);
+    setTest(arrayValue);
   };
 
   const testPainting = () => {
@@ -58,7 +79,7 @@ function GetData() {
           {apiWeb.map((value) => (
             <div className={`${value.key}`}>
               <FormComponent
-                onTestChange={setTest}
+                onTestChange={handleChange}
                 controls={choose}
                 value={value}
               ></FormComponent>
@@ -69,10 +90,7 @@ function GetData() {
     }
   };
 
-  useEffect(() => {
-    initializeValues();
-    console.log(test);
-  }, [apiWeb]);
+  useEffect(() => {}, [apiWeb, choose]);
 
   return (
     <div>
