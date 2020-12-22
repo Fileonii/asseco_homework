@@ -9,6 +9,7 @@ function GetData() {
   const [apiWeb, setApiWeb] = useState([]);
   const [loading, setLoading] = useState(false);
   const [test, setTest] = useState([]);
+  const [indexOfHandle, setIndexOfHandle] = useState();
 
   const url = "http://localhost:5000/";
 
@@ -17,6 +18,7 @@ function GetData() {
 
   const getErp = (choose) => {
     if (choose != "---") {
+      setTest([]);
       try {
         axios.get(`${url}${choose}`).then((response) => {
           setApiWeb(response.data.controls);
@@ -40,8 +42,8 @@ function GetData() {
     setTest(arrayValue);
   };
   const handleApiChoose = (e) => {
-    initializeValues();
     console.log(controls[e.target.value]);
+    setApiWeb([]);
     setChoose(controls[e.target.value]);
     getErp(controls[e.target.value]);
   };
@@ -62,35 +64,25 @@ function GetData() {
     setTest(arrayValue);
   };
 
-  const testPainting = () => {
+  const formPainting = () => {
     return (
-      <div>
-        {test.map((value) => (
-          <div className={`${value.key}`}>{value.key}</div>
+      <Form className="m-5 ">
+        {apiWeb.map((value) => (
+          <div className="mx-3">
+            <FormComponent
+              onTestChange={handleChange}
+              controls={choose}
+              value={value}
+            ></FormComponent>
+          </div>
         ))}
-      </div>
+      </Form>
     );
   };
 
-  const formPainting = () => {
-    if (apiWeb != null) {
-      return (
-        <Form>
-          {apiWeb.map((value) => (
-            <div className={`${value.key}`}>
-              <FormComponent
-                onTestChange={handleChange}
-                controls={choose}
-                value={value}
-              ></FormComponent>
-            </div>
-          ))}
-        </Form>
-      );
-    }
-  };
-
-  useEffect(() => {}, [apiWeb, choose]);
+  useEffect(() => {
+    initializeValues();
+  }, [apiWeb]);
 
   return (
     <div>
@@ -116,7 +108,6 @@ function GetData() {
       {loading ? (
         <div>
           <div className="form-box">{apiWeb ? formPainting() : null}</div>
-          {test ? testPainting() : null}
         </div>
       ) : (
         <div>
