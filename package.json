@@ -2,6 +2,7 @@
   "name": "asseco",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "server.js",
   "dependencies": {
     "cors": "^2.8.5",
