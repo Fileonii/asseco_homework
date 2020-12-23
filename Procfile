@@ -1,1 +1,1 @@
-web: node server.js && cd client && npm install && npm run dev 
+web: cd client & npm install & npm reactstart & cd ../ & node server.js
