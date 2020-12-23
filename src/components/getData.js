@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Form, Button, Spinner } from "react-bootstrap";
 import FormComponent from "./FormComponent";
+import SubmitComponent from "./SubmitComponent";
 function GetData() {
   const [controls, setControls] = useState(["---", "controls1", "controls2"]);
   const [choose, setChoose] = useState(controls[0]);
   const [apiWeb, setApiWeb] = useState([]);
   const [loading, setLoading] = useState(false);
   const [test, setTest] = useState([]);
-  const [indexOfHandle, setIndexOfHandle] = useState();
 
   const url = "http://localhost:5000/";
 
@@ -106,8 +106,9 @@ function GetData() {
         </div>
       </section>
       {loading ? (
-        <div>
-          <div className="form-box">{apiWeb ? formPainting() : null}</div>
+        <div className="form-box">
+          {apiWeb ? formPainting() : null}
+          <SubmitComponent submitValues={test}></SubmitComponent>
         </div>
       ) : (
         <div>

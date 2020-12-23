@@ -5,7 +5,7 @@ import { Form, Button, Spinner } from "react-bootstrap";
 
 function FormComponent({ controls, value, onTestChange }) {
   const inputType = value.type.toLowerCase();
-  console.log(value.defaultValue);
+
   function handleCheck(val) {
     if (val == "true") {
       return true;
