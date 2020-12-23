@@ -11,8 +11,6 @@ function GetData() {
   const [loading, setLoading] = useState(false);
   const [test, setTest] = useState([]);
 
-  const url = "http://localhost:5000/";
-
   const AddOption = controls.map((AddOption) => AddOption);
 
   const getErp = (choose) => {
