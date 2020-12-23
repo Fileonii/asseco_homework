@@ -1,7 +1,6 @@
 {
   "name": "asseco",
   "version": "0.1.0",
-  "type": "module",
   "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {

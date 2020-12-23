@@ -23,3 +23,5 @@ app.get("/controls2", async (req, response) => {
   const json = await fetch_response.json();
   response.json(json);
 });
+
+module.exports = app;
