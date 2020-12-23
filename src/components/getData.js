@@ -19,7 +19,7 @@ function GetData() {
     if (choose != "---") {
       setTest([]);
       try {
-        axios.get(`/${choose}`).then((response) => {
+        axios.get(`${choose}`).then((response) => {
           setApiWeb(response.data.controls);
         });
         setLoading(true);
