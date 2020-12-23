@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Aplikacja Praca Domowa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikacja, która na podstawie pliku JSON wygeneruje interfejs aplikacji.
 
-## Available Scripts
+## Deploy aplikacji
 
-In the project directory, you can run:
+Za pomocą platformy [heroku](https://dashboard.heroku.com/apps) aplikacja została wystawiona na "światło dzienne" i można ją obejrzeć pod linkiem [asseco-homework.herokuapp.com](https://asseco-homework.herokuapp.com/)
+Aby użyć aplikacji należy poprzez select wybrać interesujące nas API, i wygenerować plik .json
 
-### `npm start`
+#### OSTRZEŻENIE
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Aplikacja działa prawidłowo jedynie na desktopie, nie jest przystosowana do urządzeń mobilnych.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Opis Aplikacji
 
-### `npm test`
+Aplikacja została wykonana przez udostępniony w środowisku uruchomieniowym Node.js wykorzystując framework React. W celu uniknięcia problemu z żądaniami (brak nagłówka Cross-Origin Resource Sharing w udostępnionych plikach json) użyty został framework Express.js z paczką cors (pozwalającą na używanie przez aplikację tego mechanizmu).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalacja
 
-### `npm run build`
+Aby zainstalować aplikację należy użyć menadżera pakietów npm oraz mieć zainstalowane środowisko Node.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Aby zainstalować
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm i
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Aby uruchomić
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Wykonanie
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+W celu rozwiązania podstawowego problemu (żądania CORS) postanowiłem postawić osobny "serwer" zezwalający na takowe żądania, który jednocześnie lokalnie tworzy dwa zapytania do api (w zależności od linku, controls1 i controls2) na porcie 5000.
+Po stronie frontend, wykorzystany został framework React, oparty w tym przypadku o tzw. "hook'i", pozwalające na zmianę użycie "stanu" aplikacji bez używania klas.
+Po stronie klienta stworzone zostały 3 komponenty, jeden główny pozwalający na fetch'owanie zapytań z api (getData.js), i dwa pomocnicze:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- FormComponent.js - komponent generujący nam kontrolki w zależności od podanych parametrów
+- SubmitComponent.js - komponent podsumowywujący formularz, generujący JSON, zwracający przycisk.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Do ingerencji w style użyty został framework react-bootstrap oraz czysty CSS.
 
-## Learn More
+## Lista użytych pakietów npm
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Nazwa Pakietu  | Opis                                                                                                                                                       |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| axios          | Paczka pozwalająca na zapytania HTTP                                                                                                                       |
+| bootstrap      | framework do styli                                                                                                                                         |
+| cors           | Mechanizm pozwalający na użycie Cross-Origin Resource Sharing                                                                                              |
+| express        | [dokumentacja](https://expressjs.com/)                                                                                                                     |
+| npm-run-all    | Pakiet pozwalający na uruchamianie kilku komend z package.json scripts w jednym poleceniu. W tym przypadku używamy go do uruchomienia serwera i frontendu. |
+| react-spinners | "kręciołek" ze strony głównej                                                                                                                              |

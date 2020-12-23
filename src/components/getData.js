@@ -14,7 +14,6 @@ function GetData() {
   const url = "http://localhost:5000/";
 
   const AddOption = controls.map((AddOption) => AddOption);
-  console.log(test);
 
   const getErp = (choose) => {
     if (choose != "---") {
@@ -42,14 +41,11 @@ function GetData() {
     setTest(arrayValue);
   };
   const handleApiChoose = (e) => {
-    console.log(controls[e.target.value]);
     setApiWeb([]);
     setChoose(controls[e.target.value]);
     getErp(controls[e.target.value]);
   };
   const handleChange = (e) => {
-    //object is here
-    console.log(e.value);
     let arrayValue = test.slice();
     for (let index = 0; index < arrayValue.length; index++) {
       if (arrayValue[index].key === e.key) {
@@ -60,7 +56,6 @@ function GetData() {
       }
     }
 
-    console.log(arrayValue);
     setTest(arrayValue);
   };
 

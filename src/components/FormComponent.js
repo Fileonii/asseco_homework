@@ -78,10 +78,7 @@ function FormComponent({ controls, value, onTestChange }) {
       );
     }
   };
-  useEffect(() => {
-    console.log(controls);
-    console.log(value.defaultValue);
-  }, [controls]);
+  useEffect(() => {}, [controls]);
   return makeComponent();
 }
 
