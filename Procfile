@@ -1,1 +1,1 @@
-web:  node server.js & cd client & npm install & npm run build
+web:  node server.js && cd client && npm install && npm run build
