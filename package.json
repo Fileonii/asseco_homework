@@ -10,7 +10,9 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
-  "scripts": {},
+  "scripts": {
+    "start": "cd client && npm install && npm run build && cd ../ && node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Fileonii/asseco_homework.git"
