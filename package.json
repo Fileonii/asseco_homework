@@ -10,10 +10,7 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
-  "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "cd client & npm install & npm run build "
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Fileonii/asseco_homework.git"
