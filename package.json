@@ -11,8 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "cd client & npm install & npm start "
+    "start": "cd client & npm install & npm run build & cd ../ & node server.js"
   },
   "repository": {
     "type": "git",
