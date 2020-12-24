@@ -4,16 +4,13 @@ Aplikacja, która na podstawie pliku JSON wygeneruje interfejs aplikacji.
 
 ## Deploy aplikacji
 
-Za pomocą platformy [heroku](https://dashboard.heroku.com/apps) aplikacja została wystawiona na "światło dzienne" i można ją obejrzeć pod linkiem [asseco-homework.herokuapp.com](https://asseco-homework.herokuapp.com/)
+Za pomocą platformy [heroku](https://dashboard.heroku.com/apps) aplikacja została wystawiona na "światło dzienne" i można ją obejrzeć pod linkiem [asseco-homework-2.herokuapp.com](https://asseco-homework-2.herokuapp.com/)
 Aby użyć aplikacji należy poprzez select wybrać interesujące nas API, i wygenerować plik .json
-
-#### OSTRZEŻENIE
-
-Aplikacja działa prawidłowo jedynie na desktopie, nie jest przystosowana do urządzeń mobilnych.
 
 ## Opis Aplikacji
 
 Aplikacja została wykonana przez udostępniony w środowisku uruchomieniowym Node.js wykorzystując framework React. W celu uniknięcia problemu z żądaniami (brak nagłówka Cross-Origin Resource Sharing w udostępnionych plikach json) użyty został framework Express.js z paczką cors (pozwalającą na używanie przez aplikację tego mechanizmu).
+Branch "prod" przystosowany jest jako obsługujący platformę heroku, zaś master jest branch'em, który rekomenduje uruchamiać lokalnie.
 
 ## Instalacja
 
